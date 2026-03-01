@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Greenvity Energies - Engineering the Energy Transition. Leading renewable energy solutions provider for Commercial & Industrial sectors across India.">
+    <title>Greenvity Energies | Engineering the Energy Transition</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-primary': '#0f766e',
+                        'green-secondary': '#16a34a',
+                        'solar-yellow': '#fbbf24',
+                        'solar-light': '#fef3c7',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'scale-in': 'scaleIn 0.6s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.9)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Custom Styles */
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f766e 0%, #16a34a 50%, #fbbf24 100%);
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(135deg, rgba(15, 118, 110, 0.9) 0%, rgba(22, 163, 74, 0.85) 100%);
+        }
+        
+        .hero-pattern {
+            background-image: 
+                linear-gradient(135deg, rgba(15, 118, 110, 0.9) 0%, rgba(22, 163, 74, 0.85) 100%),
+                url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="60" height="60" fill="url(%23grid)"/></svg>');
+        }
+        
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .stat-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .solution-card {
+            transition: all 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px -12px rgba(15, 118, 110, 0.25);
+        }
+        
+        .timeline-step {
+            position: relative;
+        }
+        
+        .timeline-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, #16a34a, #fbbf24);
+        }
+        
+        .timeline-step:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-2xl font-bold text-green-primary">Greenvity</span>
+                    <span class="text-2xl font-light text-gray-700 ml-1">Energies</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-green-primary transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-green-primary transition-colors">About</a>
+                    <a href="#solutions" class="text-gray-700 hover:text-green-primary transition-colors">Solutions</a>
+                    <a href="#projects" class="text-gray-700 hover:text-green-primary transition-colors">Projects</a>
+                    <a href="#contact" class="text-gray-700 hover:text-green-primary transition-colors">Contact</a>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-green-primary text-white px-6 py-2 rounded-lg hover:bg-green-secondary transition-colors duration-300">
+                        Get Started
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-gray-700" id="mobile-menu-btn">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-white border-t" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">Home</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">About</a>
+                <a href="#solutions" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">Solutions</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">Projects</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 hover:bg-green-50 rounded">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center hero-pattern">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+            <div class="animate-fade-in">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                    Powering India's<br/>Industrial Energy Transition
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-4 font-light">
+                    Engineering the Energy Transition
+                </p>
+                <p class="text-lg md:text-xl text-solar-light mb-12 font-medium">
+                    Rooftop Solar | RESCO | EPC | Storage
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="#contact" class="bg-solar-yellow text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Request Consultation
+                    </a>
+                    <a href="#solutions" class="bg-white/10 backdrop-blur-sm text-white border-2 border-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-green-primary transition-all duration-300 transform hover:scale-105">
+                        Explore Solutions
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Company Snapshot -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Who We Are</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Your trusted renewable energy partner for commercial & industrial clients
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 mb-16 scroll-animate">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-green-primary mb-6">Our Approach</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Long-term PPA solutions with zero upfront cost</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">End-to-end: Develop, Finance, Build, Own & Operate</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Single accountable partner for complete lifecycle management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="text-gray-700">Performance guaranteed with managed O&M services</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-green-primary mb-6">Company Profile</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Founded</p>
+                            <p class="text-lg font-semibold text-gray-900">2025</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Headquarters</p>
+                            <p class="text-lg font-semibold text-gray-900">Gurugram, Haryana</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Service Area</p>
+                            <p class="text-lg font-semibold text-gray-900">Delhi-NCR & Haryana (Expanding across India)</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Focus</p>
+                            <p class="text-lg font-semibold text-gray-900">Commercial & Industrial (C&I) Renewable Energy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid md:grid-cols-3 gap-8 scroll-animate">
+                <div class="stat-card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl font-bold text-green-primary mb-2">15+</div>
+                    <div class="text-xl text-gray-600">MW Delivered</div>
+                    <p class="text-sm text-gray-500 mt-2">Cumulative capacity across projects</p>
+                </div>
+                <div class="stat-card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl font-bold text-green-primary mb-2">50+</div>
+                    <div class="text-xl text-gray-600">Sites Executed</div>
+                    <p class="text-sm text-gray-500 mt-2">Successful project deployments</p>
+                </div>
+                <div class="stat-card bg-white p-8 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl font-bold text-green-primary mb-2">1 MW</div>
+                    <div class="text-xl text-gray-600">JUYSHIN Rooftop</div>
+                    <p class="text-sm text-gray-500 mt-2">Flagship project in Bawal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="scroll-animate">
+                    <div class="bg-gradient-to-br from-green-primary to-green-secondary p-8 rounded-xl shadow-xl text-white h-full">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">Our Vision</h3>
+                        <p class="text-lg leading-relaxed">
+                            To become a leading integrated renewable energy infrastructure company powering industries through innovative, reliable, and sustainable energy solutions.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="scroll-animate">
+                    <div class="bg-gradient-to-br from-solar-yellow to-yellow-500 p-8 rounded-xl shadow-xl text-gray-900 h-full">
+                        <div class="w-16 h-16 bg-white/30 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">Our Mission</h3>
+                        <p class="text-lg leading-relaxed">
+                            Accelerate clean energy adoption, deliver cost-optimized projects with high technical reliability, and integrate storage and hydrogen into scalable ecosystems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Model -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Business Models</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Flexible engagement models tailored to your business needs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- RESCO Model -->
+                <div class="scroll-animate">
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden h-full">
+                        <div class="bg-gradient-to-r from-green-primary to-green-secondary p-6">
+                            <h3 class="text-3xl font-bold text-white">RESCO Model</h3>
+                            <p class="text-white/90 mt-2">Renewable Energy Service Company</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Zero Upfront Investment</span>
+                                        <p class="text-gray-600 text-sm">No capital expenditure required from your end</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Long-term PPA</span>
+                                        <p class="text-gray-600 text-sm">Fixed energy tariffs for 20-25 years</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Developer-Owned Assets</span>
+                                        <p class="text-gray-600 text-sm">We own, operate, and maintain the system</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Performance Guaranteed</span>
+                                        <p class="text-gray-600 text-sm">Energy generation assured by contract</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-green-secondary mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Managed O&M</span>
+                                        <p class="text-gray-600 text-sm">Complete lifecycle maintenance included</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- EPC Model -->
+                <div class="scroll-animate">
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden h-full">
+                        <div class="bg-gradient-to-r from-solar-yellow to-yellow-500 p-6">
+                            <h3 class="text-3xl font-bold text-gray-900">EPC Model</h3>
+                            <p class="text-gray-900/80 mt-2">Engineering, Procurement & Construction</p>
+                        </div>
+                        <div class="p-8">
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-solar-yellow mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Turnkey Engineering</span>
+                                        <p class="text-gray-600 text-sm">Complete design and procurement services</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-solar-yellow mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Installation & Commissioning</span>
+                                        <p class="text-gray-600 text-sm">Professional installation and system testing</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-solar-yellow mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Grid Approvals</span>
+                                        <p class="text-gray-600 text-sm">Complete regulatory compliance & permissions</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-solar-yellow mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">System Handover</span>
+                                        <p class="text-gray-600 text-sm">Complete documentation and training</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <svg class="w-6 h-6 text-solar-yellow mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <span class="font-semibold text-gray-900">Direct Ownership</span>
+                                        <p class="text-gray-600 text-sm">Ideal for businesses seeking asset ownership</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Portfolio -->
+    <section id="solutions" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Solutions Portfolio</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive renewable energy solutions for industrial and commercial applications
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Rooftop Solar -->
+                <div class="solution-card bg-gradient-to-br from-green-50 to-white p-8 rounded-xl shadow-lg scroll-animate">
+                    <div class="w-16 h-16 bg-green-primary rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Rooftop Solar</h3>
+                    <p class="text-gray-600">
+                        Optimize unused rooftop space with high-efficiency solar installations. Ideal for manufacturing facilities, warehouses, and commercial buildings.
+                    </p>
+                </div>
+                
+                <!-- Ground-Mounted Solar -->
+                <div class="solution-card bg-gradient-to-br from-yellow-50 to-white p-8 rounded-xl shadow-lg scroll-animate">
+                    <div class="w-16 h-16 bg-solar-yellow rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Ground-Mounted Solar</h3>
+                    <p class="text-gray-600">
+                        Large-scale solar installations on available land parcels. Perfect for industrial estates and captive power requirements.
+                    </p>
+                </div>
+                
+                <!-- Open Access -->
+                <div class="solution-card bg-gradient-to-br from-green-50 to-white p-8 rounded-xl shadow-lg scroll-animate">
+                    <div class="w-16 h-16 bg-green-secondary rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Open Access Solar/Wind Hybrid</h3>
+                    <p class="text-gray-600">
+                        Access renewable power through wheeling from remote projects. Hybrid solutions for optimized generation profiles.
+                    </p>
+                </div>
+                
+                <!-- Energy Storage -->
+                <div class="solution-card bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl shadow-lg scroll-animate">
+                    <div class="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Energy Storage (BESS)</h3>
+                    <p class="text-gray-600">
+                        Battery energy storage systems for peak shaving, load shifting, and renewable integration. Enhance grid reliability.
+                    </p>
+                </div>
+                
+                <!-- Hybrid Solutions -->
+                <div class="solution-card bg-gradient-to-br from-purple-50 to-white p-8 rounded-xl shadow-lg scroll-animate">
+                    <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Hybrid & Emerging Tech</h3>
+                    <p class="text-gray-600">
+                        Future-ready solutions including hydrogen integration, smart grids, and advanced energy management systems.
+                    </p>
+                </div>
+                
+                <!-- Consulting -->
+                <div class="solution-card bg-gradient-to-br from-gray-50 to-white p-8 rounded-xl shadow-lg scroll-animate">
+                    <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Energy Consulting</h3>
+                    <p class="text-gray-600">
+                        Strategic advisory for energy transition, feasibility studies, and sustainability roadmap development.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries We Serve -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Industries We Serve</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Trusted by diverse sectors across commercial and industrial landscape
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">🏭</div>
+                    <h4 class="font-semibold text-gray-900">Manufacturing</h4>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">📦</div>
+                    <h4 class="font-semibold text-gray-900">Logistics & Warehouses</h4>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">🏢</div>
+                    <h4 class="font-semibold text-gray-900">Corporate Offices</h4>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">❄️</div>
+                    <h4 class="font-semibold text-gray-900">Cold Storage</h4>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">🏬</div>
+                    <h4 class="font-semibold text-gray-900">Commercial Complexes</h4>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">🎓</div>
+                    <h4 class="font-semibold text-gray-900">Educational Campuses</h4>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">🏥</div>
+                    <h4 class="font-semibold text-gray-900">Healthcare Facilities</h4>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow text-center scroll-animate">
+                    <div class="text-4xl mb-3">🏨</div>
+                    <h4 class="font-semibold text-gray-900">Hospitality</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Execution Framework -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Execution Framework</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Structured approach ensuring quality, timeliness, and performance
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-5 gap-8 scroll-animate">
+                <!-- Step 1: Assess -->
+                <div class="timeline-step text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-primary to-green-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                        1
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Assess</h4>
+                    <p class="text-gray-600 text-sm">
+                        Site evaluation, energy audit, feasibility study, and initial design concepts
+                    </p>
+                </div>
+                
+                <!-- Step 2: Design -->
+                <div class="timeline-step text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-primary to-green-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                        2
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Design</h4>
+                    <p class="text-gray-600 text-sm">
+                        Detailed engineering, system optimization, structural analysis, and approvals
+                    </p>
+                </div>
+                
+                <!-- Step 3: Structure -->
+                <div class="timeline-step text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-primary to-green-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                        3
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Structure</h4>
+                    <p class="text-gray-600 text-sm">
+                        Financial modeling, PPA structuring, regulatory approvals, and contract finalization
+                    </p>
+                </div>
+                
+                <!-- Step 4: Build -->
+                <div class="timeline-step text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-primary to-green-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                        4
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Build</h4>
+                    <p class="text-gray-600 text-sm">
+                        Procurement, installation, testing, commissioning, and grid synchronization
+                    </p>
+                </div>
+                
+                <!-- Step 5: Operate -->
+                <div class="timeline-step text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-primary to-green-secondary rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                        5
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Operate</h4>
+                    <p class="text-gray-600 text-sm">
+                        24/7 monitoring, preventive maintenance, performance optimization, and reporting
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology & Quality -->
+    <section class="py-20 bg-gradient-to-br from-green-primary to-green-secondary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">Technology & Quality Commitment</h2>
+                <div class="w-24 h-1 bg-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                    Engineering excellence backed by tier-1 components and rigorous quality protocols
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg scroll-animate">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-bold mb-2">High-Efficiency Modules</h4>
+                            <p class="text-white/80 text-sm">Premium solar panels with >21% efficiency and 25-year warranties</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg scroll-animate">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-bold mb-2">SCADA-Enabled Monitoring</h4>
+                            <p class="text-white/80 text-sm">Real-time system monitoring with predictive analytics and alerts</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg scroll-animate">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-bold mb-2">Tier-1 Procurement</h4>
+                            <p class="text-white/80 text-sm">Sourcing only from world-class manufacturers with proven track records</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg scroll-animate">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-bold mb-2">Structural Validation</h4>
+                            <p class="text-white/80 text-sm">Complete structural engineering analysis and wind load calculations</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg scroll-animate">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-bold mb-2">Performance Tracking</h4>
+                            <p class="text-white/80 text-sm">Daily PR monitoring, generation analytics, and detailed reporting</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg scroll-animate">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 mr-3 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <div>
+                            <h4 class="font-bold mb-2">Battery-Ready Provisions</h4>
+                            <p class="text-white/80 text-sm">Systems designed for future storage integration and grid independence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Record -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Track Record</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Proven execution across diverse projects and geographies
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden scroll-animate">
+                    <div class="h-48 bg-gradient-to-br from-green-primary to-green-secondary flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <div class="text-5xl font-bold mb-2">1 MW</div>
+                            <div class="text-xl">Rooftop Solar</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">JUYSHIN (Minda Group)</h3>
+                        <p class="text-gray-600 mb-4">Bawal, Haryana</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Industrial rooftop installation
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Captive consumption model
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Successfully commissioned
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden scroll-animate">
+                    <div class="h-48 bg-gradient-to-br from-solar-yellow to-yellow-500 flex items-center justify-center">
+                        <div class="text-center text-gray-900">
+                            <div class="text-5xl font-bold mb-2">15+ MW</div>
+                            <div class="text-xl">Aggregate Capacity</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Multi-Site Deployment</h3>
+                        <p class="text-gray-600 mb-4">Delhi-NCR & Haryana Region</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                50+ rooftop installations
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Diverse industry sectors
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                RESCO & EPC models
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden scroll-animate">
+                    <div class="h-48 bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <div class="text-5xl font-bold mb-2">KUSUM</div>
+                            <div class="text-xl">Program Participation</div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">PHED Haryana / PM-KUSUM</h3>
+                        <p class="text-gray-600 mb-4">Government Program</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Empaneled contractor
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Agricultural solar pumps
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-secondary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Rural electrification
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Our Completed Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    See our successful solar installations in action - Building customer confidence through proven results
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Gallery Image 1 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0001_updated.png" alt="Completed Solar Project 1" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Solar Installation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 2 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0002_updated.png" alt="Completed Solar Project 2" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Rooftop Solar System</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 3 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0003_updated.png" alt="Completed Solar Project 3" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Commercial Solar Project</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 4 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0004_updated.png" alt="Completed Solar Project 4" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Industrial Installation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 5 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0005_updated.png" alt="Completed Solar Project 5" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Solar Panel Array</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 6 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0006_updated.png" alt="Completed Solar Project 6" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Renewable Energy Project</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 7 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0007_updated.png" alt="Completed Solar Project 7" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Solar Installation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 8 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251222-WA0008_updated.png" alt="Completed Solar Project 8" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Rooftop Solar</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 9 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251223-WA0018_updated.png" alt="Completed Solar Project 9" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Solar Project Execution</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 10 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251223-WA0019_updated.png" alt="Completed Solar Project 10" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">C&I Solar Installation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 11 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251223-WA0029_updated.png" alt="Completed Solar Project 11" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Renewable Energy System</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Image 12 -->
+                <div class="scroll-animate group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <img src="Images/IMG-20251223-WA0030_updated.png" alt="Completed Solar Project 12" class="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div class="p-4 text-white">
+                            <p class="text-sm font-semibold">Project Completion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 scroll-animate">
+                <p class="text-lg text-gray-600 mb-6">
+                    Join our growing list of satisfied customers and make the switch to clean energy today
+                </p>
+                <a href="#contact" class="inline-block bg-green-primary text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-secondary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    Start Your Solar Journey
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Impact -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Sustainability Impact</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Powering businesses while protecting the planet
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center scroll-animate">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-green-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Carbon Reduction</h4>
+                    <p class="text-gray-600">Significant reduction in Scope 2 emissions through clean energy adoption</p>
+                </div>
+                
+                <div class="text-center scroll-animate">
+                    <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-solar-yellow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Cost Stability</h4>
+                    <p class="text-gray-600">Locked-in tariffs protecting against volatile grid prices</p>
+                </div>
+                
+                <div class="text-center scroll-animate">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">ESG Reporting</h4>
+                    <p class="text-gray-600">Comprehensive data for sustainability disclosure and compliance</p>
+                </div>
+                
+                <div class="text-center scroll-animate">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-10 h-10 text-green-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Energy Independence</h4>
+                    <p class="text-gray-600">Enhanced energy security and reduced grid dependence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 scroll-animate">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-green-primary to-solar-yellow mx-auto mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ready to start your renewable energy journey? Let's discuss your requirements
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="scroll-animate">
+                    <div class="bg-gradient-to-br from-green-primary to-green-secondary p-8 rounded-xl text-white h-full">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Email</h4>
+                                    <a href="mailto:greenvityenergies@gmail.com" class="hover:text-solar-yellow transition-colors">
+                                        greenvityenergies@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                </svg>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Phone</h4>
+                                    <a href="tel:+919138575793" class="hover:text-solar-yellow transition-colors">
+                                        +91 9138575793
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <svg class="w-6 h-6 mr-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Location</h4>
+                                    <p>Gurugram, Haryana</p>
+                                    <p class="text-sm text-white/80">Serving Delhi-NCR & Beyond</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-8 border-t border-white/20">
+                            <h4 class="font-semibold mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <span class="sr-only">LinkedIn</span>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <span class="sr-only">Twitter</span>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                                    </svg>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors">
+                                    <span class="sr-only">Facebook</span>
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="scroll-animate">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Schedule Energy Assessment</h3>
+                        <form class="space-y-6" id="contactForm">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent transition-colors">
+                            </div>
+                            
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name *</label>
+                                <input type="text" id="company" name="company" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent transition-colors">
+                            </div>
+                            
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                                    <input type="email" id="email" name="email" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent transition-colors">
+                                </div>
+                                
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone *</label>
+                                    <input type="tel" id="phone" name="phone" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent transition-colors">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="requirement" class="block text-sm font-medium text-gray-700 mb-2">Your Requirement *</label>
+                                <textarea id="requirement" name="requirement" rows="4" required 
+                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-primary focus:border-transparent transition-colors"
+                                    placeholder="Tell us about your energy needs, site details, and preferred business model..."></textarea>
+                            </div>
+                            
+                            <button type="submit" 
+                                class="w-full bg-gradient-to-r from-green-primary to-green-secondary text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-green-secondary hover:to-green-primary transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                Submit Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <span class="text-3xl font-bold text-green-secondary">Greenvity</span>
+                        <span class="text-3xl font-light text-white ml-2">Energies</span>
+                    </div>
+                    <p class="text-gray-400 mb-4 text-lg">Engineering the Energy Transition</p>
+                    <p class="text-gray-400 text-sm">
+                        Leading renewable energy solutions provider for Commercial & Industrial sectors. 
+                        Powering India's sustainable future through innovative solar and storage solutions.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-green-secondary transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-green-secondary transition-colors">About Us</a></li>
+                        <li><a href="#solutions" class="hover:text-green-secondary transition-colors">Solutions</a></li>
+                        <li><a href="#projects" class="hover:text-green-secondary transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-green-secondary transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Rooftop Solar</li>
+                        <li>Ground Mounted Solar</li>
+                        <li>RESCO Model</li>
+                        <li>EPC Services</li>
+                        <li>Energy Storage</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                        &copy; 2025 Greenvity Energies. All rights reserved.
+                    </p>
+                    <div class="flex space-x-6 text-sm text-gray-400">
+                        <a href="#" class="hover:text-green-secondary transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-green-secondary transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-green-secondary transition-colors">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Navbar Background on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+            } else {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+        
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all scroll-animate elements
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // In a real application, you would send this data to a server
+            console.log('Form submitted:', data);
+            
+            // Show success message
+            alert('Thank you for your interest! We will contact you shortly.');
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
